@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace ElevenNote.Data
@@ -10,6 +11,9 @@ namespace ElevenNote.Data
         [Key]
         public int NoteId { get; set; }
 
+        [ForeignKey("Category")]
+        public int CategoryID { get; set; }
+
         [Required]
         public Guid OwnerId { get; set; }
 
@@ -18,6 +22,8 @@ namespace ElevenNote.Data
 
         [Required]
         public string Content { get; set; }
+
+        public virtual Category Category { get; set; }
 
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
